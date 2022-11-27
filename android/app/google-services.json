@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "82697239004",
+    "project_id": "rtdb-nodemcu-project",
+    "storage_bucket": "rtdb-nodemcu-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82697239004:android:1e77efb75b6bd845b67719",
+        "android_client_info": {
+          "package_name": "com.vux.rtbd_nodemcu_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82697239004-jqf242fbqqk29sth921jk8qnlfsla4di.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSQce0wTdJ7cGmo_MMyMRkZqjZ5h3Cmvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82697239004-jqf242fbqqk29sth921jk8qnlfsla4di.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
