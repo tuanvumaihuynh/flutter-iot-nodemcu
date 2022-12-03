@@ -1,46 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:rtbd_nodemcu_project/constants/app_layout.dart';
 import 'package:rtbd_nodemcu_project/constants/app_styles.dart';
+import 'package:rtbd_nodemcu_project/screens/chart_page.dart';
 import 'package:rtbd_nodemcu_project/widgets/ac_widget.dart';
 import 'package:rtbd_nodemcu_project/widgets/card_widget.dart';
 
-class RoomControlPage extends StatefulWidget {
+class RoomControlPage extends StatelessWidget {
   final Map<dynamic, dynamic> messages;
   final dynamic keys;
-  const RoomControlPage({
-    Key? key,
-    required this.messages,
-    required this.keys,
-  }) : super(key: key);
+  RoomControlPage({Key? key, required this.messages, required this.keys})
+      : super(key: key);
 
-  @override
-  State<RoomControlPage> createState() => _RoomControlPageState();
-}
-
-class _RoomControlPageState extends State<RoomControlPage> {
   final FirebaseDatabase database = FirebaseDatabase.instance;
   final DatabaseReference _dbRef = FirebaseDatabase.instance.ref("iot/home/");
-
-  dynamic getMap(Map<dynamic, dynamic> map) {
-    for (var i = 0; i < map.length; i++) {
-      if (map.values.toList()[i]['name'] == widget.messages['name']) {
-        return map.values.elementAt(i);
-      }
-    }
-  }
-
-  void changeStateDevice(String node, bool state) {
-    _dbRef.update({node: state});
-  }
 
   @override
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
     final height = size.height;
     final width = size.width;
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
@@ -66,16 +47,21 @@ class _RoomControlPageState extends State<RoomControlPage> {
                   ),
                 ),
                 Text(
-                  widget.messages['name'],
+                  messages['name'],
                   style: TextStyle(
                       color: const Color(0xFF141414),
                       fontSize: width * 0.051,
                       fontWeight: FontWeight.bold),
                 ),
-                Icon(
-                  Icons.settings,
-                  size: width * 0.076,
-                  color: const Color(0xFF16224A),
+                GestureDetector(
+                  onTap: (() {
+                    showPopupMenu(context);
+                  }),
+                  child: Icon(
+                    Icons.settings,
+                    size: width * 0.076,
+                    color: const Color(0xFF16224A),
+                  ),
                 ),
               ],
             ),
@@ -94,7 +80,7 @@ class _RoomControlPageState extends State<RoomControlPage> {
                   final humidity =
                       mesVal['devices']['dht']['humidity'].toDouble();
                   Map<dynamic, dynamic> devices = mesVal['devices'];
-                  final node = '${widget.keys}/devices/';
+                  final node = '$keys/devices/';
 
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,5 +157,88 @@ class _RoomControlPageState extends State<RoomControlPage> {
         ),
       ),
     );
+  }
+
+  dynamic getMap(Map<dynamic, dynamic> map) {
+    for (var i = 0; i < map.length; i++) {
+      if (map.values.toList()[i]['name'] == messages['name']) {
+        return map.values.elementAt(i);
+      }
+    }
+  }
+
+  void changeStateDevice(String node, bool state) {
+    _dbRef.update({node: state});
+  }
+
+  showPopupMenu(context) {
+    showMenu<String>(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      context: context,
+      position: const RelativeRect.fromLTRB(15, 20.0, 0.0,
+          0.0), //position where you want to show the menu on screen
+      items: [
+        PopupMenuItem<String>(
+            value: '1',
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Chart',
+                  style: AppStyle.popUpText,
+                ),
+                Icon(
+                  Icons.add_chart_rounded,
+                  size: 25,
+                  color: AppStyle.titleColor,
+                ),
+              ],
+            )),
+        PopupMenuItem<String>(
+            value: '2',
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'About app',
+                  style: AppStyle.popUpText,
+                ),
+                Icon(
+                  Icons.info_outline_rounded,
+                  size: 25,
+                  color: AppStyle.titleColor,
+                ),
+              ],
+            )),
+        PopupMenuItem<String>(
+            value: '3',
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Exit',
+                  style: AppStyle.popUpText,
+                ),
+                Icon(
+                  Icons.logout_rounded,
+                  size: 25,
+                  color: AppStyle.titleColor,
+                ),
+              ],
+            )),
+      ],
+      elevation: 8.0,
+    ).then<void>((String? itemSelected) {
+      if (itemSelected == null) return;
+
+      if (itemSelected == "1") {
+        Navigator.push(
+            context, MaterialPageRoute(builder: ((context) => ChartPage())));
+      } else if (itemSelected == "2") {
+        //code here
+      } else {
+        SystemNavigator.pop();
+      }
+    });
   }
 }

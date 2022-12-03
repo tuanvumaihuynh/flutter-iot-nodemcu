@@ -1,89 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/services.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:rtbd_nodemcu_project/constants/app_layout.dart';
 import 'package:rtbd_nodemcu_project/constants/app_styles.dart';
 import 'package:rtbd_nodemcu_project/widgets/forecaster_widget.dart';
 import 'package:rtbd_nodemcu_project/widgets/room_widget.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   final FirebaseDatabase database = FirebaseDatabase.instance;
   final DatabaseReference _dbRef = FirebaseDatabase.instance.ref("iot/home/");
-  showPopupMenu() {
-    showMenu<String>(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      context: context,
-      position: const RelativeRect.fromLTRB(15, 20.0, 0.0,
-          0.0), //position where you want to show the menu on screen
-      items: [
-        PopupMenuItem<String>(
-            value: '1',
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Notification',
-                  style: AppStyle.popUpText,
-                ),
-                Icon(
-                  Icons.notifications_none,
-                  size: 25,
-                  color: AppStyle.titleColor,
-                ),
-              ],
-            )),
-        PopupMenuItem<String>(
-            value: '2',
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'About app',
-                  style: AppStyle.popUpText,
-                ),
-                Icon(
-                  Icons.info_outline_rounded,
-                  size: 25,
-                  color: AppStyle.titleColor,
-                ),
-              ],
-            )),
-        PopupMenuItem<String>(
-            value: '3',
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Exit',
-                  style: AppStyle.popUpText,
-                ),
-                Icon(
-                  Icons.logout_rounded,
-                  size: 25,
-                  color: AppStyle.titleColor,
-                ),
-              ],
-            )),
-      ],
-      elevation: 8.0,
-    ).then<void>((String? itemSelected) {
-      if (itemSelected == null) return;
-
-      if (itemSelected == "1") {
-      } else if (itemSelected == "2") {
-        //code here
-      } else {
-        SystemNavigator.pop();
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    showPopupMenu();
+                    showPopupMenu(context);
                   },
                   child: Icon(
                     Icons.settings,
@@ -209,5 +136,74 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  showPopupMenu(context) {
+    showMenu<String>(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      context: context,
+      position: const RelativeRect.fromLTRB(15, 20.0, 0.0,
+          0.0), //position where you want to show the menu on screen
+      items: [
+        PopupMenuItem<String>(
+            value: '1',
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Notification',
+                  style: AppStyle.popUpText,
+                ),
+                Icon(
+                  Icons.notifications_none,
+                  size: 25,
+                  color: AppStyle.titleColor,
+                ),
+              ],
+            )),
+        PopupMenuItem<String>(
+            value: '2',
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'About app',
+                  style: AppStyle.popUpText,
+                ),
+                Icon(
+                  Icons.info_outline_rounded,
+                  size: 25,
+                  color: AppStyle.titleColor,
+                ),
+              ],
+            )),
+        PopupMenuItem<String>(
+            value: '3',
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Exit',
+                  style: AppStyle.popUpText,
+                ),
+                Icon(
+                  Icons.logout_rounded,
+                  size: 25,
+                  color: AppStyle.titleColor,
+                ),
+              ],
+            )),
+      ],
+      elevation: 8.0,
+    ).then<void>((String? itemSelected) {
+      if (itemSelected == null) return;
+
+      if (itemSelected == "1") {
+      } else if (itemSelected == "2") {
+        //code here
+      } else {
+        SystemNavigator.pop();
+      }
+    });
   }
 }

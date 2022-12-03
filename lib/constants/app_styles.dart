@@ -18,6 +18,7 @@ class AppStyle {
     Color(0xFFF8F4EE),
   ];
 
+  static Color chartColor = const Color(0xFFFFFBF3);
   static Color titleColor = const Color(0xFF16224A);
   static TextStyle headLine = const TextStyle(
       color: Color(0xFF16224A), fontSize: 35, fontWeight: FontWeight.bold);
@@ -31,4 +32,6 @@ class AppStyle {
       color: Color(0xFF16224A), fontSize: 18, fontWeight: FontWeight.bold);
   static TextStyle popUpText =
       const TextStyle(color: Color(0xFF16224A), fontSize: 16);
+  static TextStyle timePickText =
+      const TextStyle(color: Colors.grey, fontSize: 15);
 }
