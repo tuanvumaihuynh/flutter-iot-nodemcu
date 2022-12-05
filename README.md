@@ -1,4 +1,4 @@
-# Flutter IoT NodeMCU App
+# Flutter Vhome App
 
 This is the application I made for some IoT projects at Ho Chi Minh City University of Technology and Education.
 
