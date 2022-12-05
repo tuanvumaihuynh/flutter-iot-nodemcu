@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rtbd_nodemcu_project/constants/app_layout.dart';
+import 'package:rtbd_nodemcu_project/widgets/line_chart_widget.dart';
 
 class ForecasterWidget extends StatelessWidget {
   const ForecasterWidget({super.key});
@@ -50,7 +51,7 @@ class ForecasterWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '26 November 2022',
+                  getDate(),
                   style:
                       TextStyle(color: Colors.white, fontSize: width * 0.0407),
                 ),
@@ -67,5 +68,11 @@ class ForecasterWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String getDate() {
+    final date = DateTime.now();
+    String fullStr = "${date.day} ${months[date.month - 1]} ${date.year}";
+    return fullStr;
   }
 }
