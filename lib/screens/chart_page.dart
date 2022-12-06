@@ -5,7 +5,6 @@ import 'package:rtbd_nodemcu_project/models/date_model.dart';
 import 'package:rtbd_nodemcu_project/services/remote_service.dart';
 import 'package:rtbd_nodemcu_project/widgets/chart_card_widget.dart';
 import 'package:rtbd_nodemcu_project/widgets/line_chart_widget.dart';
-import 'package:rtbd_nodemcu_project/widgets/skeleton_widget.dart';
 
 class ChartPage extends StatefulWidget {
   const ChartPage({super.key});
@@ -83,7 +82,12 @@ class _ChartPageState extends State<ChartPage> {
                 ? ChartCardWidget(
                     dateModelList: dateModelList,
                   )
-                : const SkeletonWidget(),
+                : Column(
+                    children: [
+                      SizedBox(height: height * 0.1),
+                      const CircularProgressIndicator(),
+                    ],
+                  ),
           ],
         ),
       ),

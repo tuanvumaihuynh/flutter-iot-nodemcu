@@ -25,8 +25,6 @@ class LineChartWidget extends StatelessWidget {
   const LineChartWidget(
       {super.key, required this.isTemperature, required this.avgPoint});
 
-  // TODO: Type chart picker, date range, custom color through status bar chart
-  // TODO: Animation when change chart
   @override
   Widget build(BuildContext context) {
     return LineChart(

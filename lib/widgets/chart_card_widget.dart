@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rtbd_nodemcu_project/constants/app_layout.dart';
 import 'package:rtbd_nodemcu_project/constants/app_styles.dart';
 import 'package:rtbd_nodemcu_project/models/date_model.dart';
 import 'package:rtbd_nodemcu_project/models/point_model.dart';
 import 'package:rtbd_nodemcu_project/services/remote_service.dart';
 import 'package:rtbd_nodemcu_project/widgets/line_chart_widget.dart';
-import "package:collection/collection.dart";
 
 const List<String> chartType = ['Temperature', 'Humidity'];
 
@@ -46,11 +44,10 @@ class _ChartCardWidgetState extends State<ChartCardWidget> {
               children: [
                 DropdownButton<String>(
                   value: dropdownVal,
-                  iconSize: 0,
                   borderRadius: BorderRadius.circular(20),
                   elevation: 2,
                   style: const TextStyle(
-                      color: Color(0xFF16224A),
+                      color: Color(0xFF897C64),
                       fontSize: 20,
                       fontWeight: FontWeight.w500),
                   underline: Container(
