@@ -5,8 +5,8 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:rtbd_nodemcu_project/constants/app_layout.dart';
 import 'package:rtbd_nodemcu_project/constants/app_styles.dart';
 import 'package:rtbd_nodemcu_project/screens/chart_page.dart';
-import 'package:rtbd_nodemcu_project/widgets/ac_widget.dart';
-import 'package:rtbd_nodemcu_project/widgets/card_widget.dart';
+import 'package:rtbd_nodemcu_project/widgets/room_control_page/ac_widget.dart';
+import 'package:rtbd_nodemcu_project/widgets/room_control_page/card_widget.dart';
 
 class RoomControlPage extends StatelessWidget {
   final Map<dynamic, dynamic> messages;

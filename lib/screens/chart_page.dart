@@ -3,8 +3,8 @@ import 'package:rtbd_nodemcu_project/constants/app_layout.dart';
 import 'package:rtbd_nodemcu_project/constants/app_styles.dart';
 import 'package:rtbd_nodemcu_project/models/date_model.dart';
 import 'package:rtbd_nodemcu_project/services/remote_service.dart';
-import 'package:rtbd_nodemcu_project/widgets/chart_card_widget.dart';
-import 'package:rtbd_nodemcu_project/widgets/line_chart_widget.dart';
+import 'package:rtbd_nodemcu_project/widgets/chart_page/chart_card_widget.dart';
+import 'package:rtbd_nodemcu_project/widgets/chart_page/line_chart_widget.dart';
 
 class ChartPage extends StatefulWidget {
   const ChartPage({super.key});

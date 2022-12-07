@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:rtbd_nodemcu_project/constants/app_layout.dart';
 import 'package:rtbd_nodemcu_project/constants/app_styles.dart';
-import 'package:rtbd_nodemcu_project/widgets/forecaster_widget.dart';
-import 'package:rtbd_nodemcu_project/widgets/room_widget.dart';
+import 'package:rtbd_nodemcu_project/widgets/home_page/forecaster_widget.dart';
+import 'package:rtbd_nodemcu_project/widgets/home_page/room_widget.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});

@@ -4,7 +4,7 @@ import 'package:rtbd_nodemcu_project/constants/app_styles.dart';
 import 'package:rtbd_nodemcu_project/models/date_model.dart';
 import 'package:rtbd_nodemcu_project/models/point_model.dart';
 import 'package:rtbd_nodemcu_project/services/remote_service.dart';
-import 'package:rtbd_nodemcu_project/widgets/line_chart_widget.dart';
+import 'package:rtbd_nodemcu_project/widgets/chart_page/line_chart_widget.dart';
 
 const List<String> chartType = ['Temperature', 'Humidity'];
 

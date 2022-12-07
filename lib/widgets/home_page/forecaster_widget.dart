@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rtbd_nodemcu_project/constants/app_layout.dart';
-import 'package:rtbd_nodemcu_project/widgets/line_chart_widget.dart';
+import 'package:rtbd_nodemcu_project/widgets/chart_page/line_chart_widget.dart';
 
 class ForecasterWidget extends StatelessWidget {
   const ForecasterWidget({super.key});
