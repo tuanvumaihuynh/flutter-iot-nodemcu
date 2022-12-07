@@ -4,7 +4,7 @@ import 'package:rtbd_nodemcu_project/constants/app_styles.dart';
 import 'package:rtbd_nodemcu_project/models/date_model.dart';
 import 'package:rtbd_nodemcu_project/models/point_model.dart';
 
-List months = [
+const List months = [
   'Jan',
   'Feb',
   'Mar',
@@ -184,12 +184,9 @@ class LineChartWidget extends StatelessWidget {
     final length = avgPoint.length;
 
     if (length % 2 != 0) {
-      return [0, length ~/ 4 + 1, length - length ~/ 4 - 2, length - 1];
+      return [0, length ~/ 4 + 2, length - length ~/ 4 - 3, length - 1];
     }
-    // if (length % 4 != 0) {
-    //   return [0, length ~/ 2, length - length ~/ 2, length - 1];
-    // }
-    return [0, length ~/ 4 + 1, length - length ~/ 4 - 2, length - 1];
+    return [0, length ~/ 4 + 2, length - length ~/ 4 - 2, length - 1];
   }
 }
 
